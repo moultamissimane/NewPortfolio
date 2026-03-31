@@ -52,7 +52,7 @@ const AboutSection: React.FC = () => {
                 />
               </div>
               <div className="absolute bottom-4 right-4 p-3 bg-white dark:bg-slate-900 shadow-lg rounded-lg">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">1+ Years Experience</p>
+                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">3+ Years Experience</p>
               </div>
             </div>
           </div>
