@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Image from '../public/me.jpeg'
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,20 +40,18 @@ const AboutSection: React.FC = () => {
           ref={contentRef}
           className="opacity-0 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
         >
-          <div className="relative p-1 rounded-lg">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary-400 via-accent-500 to-accent-600 rounded-lg blur opacity-20"></div>
-            <div className="relative h-full rounded-lg bg-slate-100 dark:bg-slate-900 overflow-hidden p-8">
+          <div className="relative p-1 rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary-400 via-accent-500 to-accent-300 rounded-lg blur opacity-20"></div>
+            <div className="relative h-full rounded-4xl bg-slate-100 dark:bg-slate-900 overflow-hidden p-8">
               <div className="aspect-square w-full relative rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800">
-                {/* <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-slate-300 dark:text-slate-700">MI</div> */}
-                {/* This is where an actual image would go */}
                 <img 
-                  src="https://kinsta.com/wp-content/uploads/2021/11/what-is-a-full-stack-developer-1200x675.png" 
+                  src={Image}
                   alt="Profile" 
                   className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className="absolute bottom-4 right-4 p-3 bg-white dark:bg-slate-900 shadow-lg rounded-lg">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">3+ Years Experience</p>
+                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">2+ Years Experience</p>
               </div>
             </div>
           </div>
@@ -78,15 +77,15 @@ const AboutSection: React.FC = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary-400"></div>
-                <p className="font-medium">JavaScript Developer</p>
+                <p className="font-medium">Frontend Developer</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary-400"></div>
-                <p className="font-medium">Next/React JS Specialist</p>
+                <p className="font-medium">Next JS/React JS/Node JS Specialist</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary-400"></div>
-                <p className="font-medium">Node.js Developer</p>
+                <p className="font-medium">Backend Developer</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-primary-400"></div>
