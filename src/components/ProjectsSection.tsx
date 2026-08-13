@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import confidentialImg from '../public/confidentiel-lmd.jpg';
 
 interface Project {
   id: number;
@@ -13,6 +14,23 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 101,
+    title: "Visionyze (Confidential)",
+    description: "Confidential enterprise project focused on architecture, scalability and technical leadership. Led migration to Next.js (SSR/ISR) and built a high-performance Node.js backend on AWS.",
+    image: confidentialImg,
+    technologies: ["Next.js", "Node.js", "TypeScript", "PostgreSQL", "AWS"],
+    category: "fullstack"
+  },
+  {
+    id: 100,
+    title: "LinkedSync",
+    description: "LinkedSync is a profile management platform for LinkedIn, built with a MERN-style stack and LinkedIn API integrations to manage and update profiles programmatically.",
+    image: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
+    technologies: ["React.js", "Node.js", "Express", "MongoDB", "LinkedIn API"],
+    // demoUrl: "https://example.com",
+    category: "fullstack"
+  },
   {
     id: 1,
     title: "Dealkhir",

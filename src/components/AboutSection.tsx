@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Image from '../public/me.jpeg'
+import Image from '../public/me2.jpg'
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,7 +51,7 @@ const AboutSection: React.FC = () => {
                 />
               </div>
               <div className="absolute bottom-4 right-4 p-3 bg-white dark:bg-slate-900 shadow-lg rounded-lg">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">2+ Years Experience</p>
+                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">3+ Years Experience</p>
               </div>
             </div>
           </div>
@@ -63,16 +63,23 @@ const AboutSection: React.FC = () => {
             <div className="h-1 w-24 bg-gradient-to-r from-primary-400 to-accent-500 mb-6"></div>
             
             <p className="text-lg mb-6 text-slate-700 dark:text-slate-300">
-              I'm Moultamiss Imane, a passionate full-stack developer with a dedication to crafting elegant solutions to complex problems. 
-              My journey in web development began with a curiosity for how things work on the internet, and has evolved into a career 
-              creating intuitive, user-focused applications.
+              I'm Moultamiss Imane, a Full Stack JavaScript developer with over 3 years of professional experience building
+              performant web and mobile applications. I work across the stack — from polished, accessible front-ends to
+              scalable back-end systems and cloud-native infrastructure.
             </p>
-            
+
             <p className="text-lg mb-8 text-slate-700 dark:text-slate-300">
-              I specialize in JavaScript ecosystem technologies, building everything from responsive front-end interfaces to 
-              scalable back-end systems. My approach combines technical precision with creative problem-solving to deliver 
-              solutions that not only work flawlessly but provide exceptional user experiences.
+              My primary tools include React.js, Next.js, Node.js, TypeScript, PostgreSQL, MongoDB, GraphQL, Docker and AWS.
+              I also implement CI/CD pipelines using GitHub Actions and focus on maintainable, testable code and strong UX.
             </p>
+
+            <div className="mb-6">
+              <h3 className="font-semibold mb-2">Education</h3>
+              <ul className="text-sm text-slate-700 dark:text-slate-300 space-y-1">
+                <li><strong>Full Stack JavaScript Development</strong> — Youcode, Safi (2021–2023)</li>
+                <li><strong>Master: Computer Science</strong> — Heriot-Watt University (Sep 2025 – May 2027)</li>
+              </ul>
+            </div>
             
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
