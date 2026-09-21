@@ -1,53 +1,36 @@
-export interface KeySkill {
+export interface SkillGroup {
   name: string;
-  level: number;
-  description: string;
+  items: string[];
 }
 
-/** Headline skills, shown as progress rings. */
-export const keySkills: KeySkill[] = [
+/** Grouped exactly as on the CV. */
+export const skillGroups: SkillGroup[] = [
   {
-    name: 'React & Next.js',
-    level: 90,
-    description: 'Component architecture, SSR/ISR and performance-tuned front-ends.',
+    name: 'Programming languages',
+    items: ['TypeScript', 'JavaScript', 'Java 17', 'C# (.NET 8)', 'Python 3', 'SQL', 'PHP'],
   },
   {
-    name: 'TypeScript',
-    level: 90,
-    description: 'Strictly typed code across front-end, back-end and shared models.',
+    name: 'Front-end & mobile',
+    items: ['React.js', 'Next.js', 'React Native', 'Redux Toolkit', 'Tailwind CSS', 'Shadcn/UI', 'Material UI', 'Figma'],
   },
   {
-    name: 'Node.js & Express',
-    level: 92,
-    description: 'REST and GraphQL APIs designed for scale and clear contracts.',
+    name: 'Back-end & enterprise frameworks',
+    items: ['Node.js', 'Express', 'ASP.NET Core 8', 'Spring Boot 3', 'FastAPI', 'SQLAlchemy', 'REST API', 'GraphQL', 'Prisma'],
   },
   {
-    name: 'Databases',
-    level: 85,
-    description: 'PostgreSQL and MongoDB: schema design, queries and migrations.',
+    name: 'Cloud & DevOps',
+    items: ['Docker', 'Azure', 'AWS', 'GitHub Actions (CI/CD)', 'Vercel', 'Firebase', 'Nginx'],
   },
   {
-    name: 'Testing & CI/CD',
-    level: 85,
-    description: 'Jest, Cypress and GitHub Actions pipelines that catch regressions early.',
+    name: 'Testing, security & best practices',
+    items: [
+      'Playwright (E2E)',
+      'Testcontainers',
+      'JUnit 5',
+      'Pytest',
+      'RBAC & OWASP security',
+      'Append-only audit logs',
+      'Clean Code & hexagonal architecture',
+    ],
   },
-  {
-    name: 'AWS & Docker',
-    level: 75,
-    description: 'Containerised services and cloud-native deployments.',
-  },
-];
-
-/** Supporting stack, shown as chips. */
-export const alsoUsing: string[] = [
-  'HTML5 & CSS3',
-  'Tailwind CSS',
-  'React Native',
-  'Nest.js',
-  'GraphQL',
-  'REST API design',
-  'Git & GitHub',
-  'Firebase',
-  'Responsive design',
-  'Agile',
 ];

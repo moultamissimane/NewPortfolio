@@ -28,19 +28,22 @@ export default function HeroSection() {
       <CropMarks className="right-[6%] top-[48%]" />
 
       <div className="relative mx-auto flex w-full max-w-page flex-col items-center text-center">
-        <p className="font-display text-lg font-medium text-mist-100 sm:text-xl">
-          Hi, I’m {profile.name}
-          <span aria-hidden="true" className="ml-2 inline-block h-2 w-2 rounded-full bg-glow align-middle" />
-        </p>
+        <p className="font-display text-lg font-medium text-mist-100 sm:text-xl">Hi, I’m {profile.name}</p>
 
         <h1 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.1] text-glow sm:text-6xl">
-          Full Stack JavaScript Developer
+          {profile.role}
         </h1>
+        <p className="mt-4 font-display text-sm font-medium text-mist-300 sm:text-base">{profile.headline}</p>
 
         <p className="mt-8 max-w-2xl text-sm leading-relaxed text-mist-500 sm:text-base">{profile.tagline}</p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button href="#projects">View my work</Button>
+        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink-700 px-3 py-1 text-xs font-medium text-mist-100">
+          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-glow" />
+          {profile.availability}
+        </p>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="#experience">View my work</Button>
           <Button href="#contact" variant="outline">
             Get in touch
           </Button>

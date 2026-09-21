@@ -1,8 +1,11 @@
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
+import EducationSection from './components/EducationSection';
+import ExperienceSection from './components/ExperienceSection';
 import Footer from './components/Footer';
 import HeroSection from './components/HeroSection';
 import Navbar from './components/Navbar';
+import PersonalProjectsSection from './components/PersonalProjectsSection';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 
@@ -19,8 +22,11 @@ export default function App() {
       <main>
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
+        <ExperienceSection />
+        <PersonalProjectsSection />
         <ProjectsSection />
+        <EducationSection />
+        <SkillsSection />
         <ContactSection />
       </main>
       <Footer />

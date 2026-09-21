@@ -77,8 +77,8 @@ export default function ProjectsSection() {
         <Reveal>
           <SectionHeading
             id="projects-title"
-            title="Projects"
-            intro="A selection of products I’ve designed, built or led, from client sites to enterprise platforms."
+            title="Professional work"
+            intro="Products I’ve built or led for employers and clients, from storefronts to enterprise platforms."
           />
 
           <div role="group" aria-label="Filter projects" className="mt-8 flex flex-wrap gap-2">

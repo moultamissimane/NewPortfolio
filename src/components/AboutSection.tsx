@@ -1,6 +1,7 @@
 import { profile } from '../data/profile';
+import { personalProjects } from '../data/personalProjects';
 import { projects } from '../data/projects';
-import { alsoUsing, keySkills } from '../data/skills';
+import { skillGroups } from '../data/skills';
 import { useCountUp } from '../hooks/useCountUp';
 import { useInView } from '../hooks/useInView';
 import portrait from '../assets/me2.jpg';
@@ -27,14 +28,16 @@ function Stat({ value, label, active }: StatProps) {
   );
 }
 
+const technologyCount = skillGroups.reduce((total, group) => total + group.items.length, 0);
+
+const stats = [
+  { value: profile.yearsOfExperience, label: 'Years of professional experience' },
+  { value: projects.length + personalProjects.length, label: 'Projects built' },
+  { value: technologyCount, label: 'Technologies and practices' },
+];
+
 export default function AboutSection() {
   const [statsRef, statsVisible] = useInView<HTMLDListElement>(0.4);
-
-  const stats = [
-    { value: profile.yearsOfExperience, label: 'Years of professional experience' },
-    { value: projects.length, label: 'Products shipped' },
-    { value: keySkills.length + alsoUsing.length, label: 'Technologies and practices' },
-  ];
 
   return (
     <section id="about" aria-labelledby="about-title" className="px-6 py-24">
@@ -46,18 +49,6 @@ export default function AboutSection() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-
-          <h3 className="mt-10 font-display text-base font-semibold text-mist-100">Education</h3>
-          <ul className="mt-3 space-y-3">
-            {profile.education.map((item) => (
-              <li key={item.title} className="text-sm">
-                <p className="font-medium text-mist-100">{item.title}</p>
-                <p className="text-mist-500">
-                  {item.place} · {item.period}
-                </p>
-              </li>
-            ))}
-          </ul>
         </Reveal>
 
         <Reveal delay={120} className="md:w-[22rem]">
