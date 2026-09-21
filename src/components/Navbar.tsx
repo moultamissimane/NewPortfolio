@@ -1,109 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { navLinks, profile } from '../data/profile';
+import { useActiveSection } from '../hooks/useActiveSection';
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const sectionIds = navLinks.map((link) => link.href.slice(1));
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const active = useActiveSection(sectionIds);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg shadow-md' : 'bg-transparent'
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open ? 'border-b border-ink-800 bg-ink-950/85 backdrop-blur' : 'border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a 
-          href="#home" 
-          className="text-xl font-bold relative group"
-        >
-          <span className="relative z-10">Portfolio</span>
-          <span className="absolute bottom-0 left-0 w-0 h-1 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+      <nav aria-label="Primary" className="mx-auto flex h-16 max-w-page items-center justify-between px-6">
+        <a href="#top" className="font-display text-lg font-semibold text-mist-100">
+          {profile.name}
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="relative text-sm font-medium group"
-            >
-              <span className="relative z-10">{link.name}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-        </div>
+        <ul className="hidden items-center gap-8 md:flex">
+          {navLinks.map(({ label, href }) => {
+            const isActive = active === href.slice(1);
+            return (
+              <li key={href}>
+                <a
+                  href={href}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`text-sm font-medium transition-colors hover:text-glow ${
+                    isActive ? 'text-glow' : 'text-mist-100'
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-        {/* Mobile Navigation Button */}
-        <div className="flex items-center md:hidden">
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 mr-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button
-            onClick={toggleMenu}
-            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
+        <button
+          type="button"
+          className="-mr-2 rounded p-2 text-mist-100 md:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="fixed inset-0 top-16 bg-white dark:bg-slate-950 z-40 md:hidden">
-          <div className="flex flex-col items-center justify-center h-full">
-            {navLinks.map((link) => (
+      {open && (
+        <ul id="mobile-menu" className="border-t border-ink-800 px-6 pb-6 pt-2 md:hidden">
+          {navLinks.map(({ label, href }) => (
+            <li key={href}>
               <a
-                key={link.name}
-                href={link.href}
-                className="py-4 text-lg font-medium"
-                onClick={toggleMenu}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="block border-b border-ink-800 py-4 text-base font-medium text-mist-100"
               >
-                {link.name}
+                {label}
               </a>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}

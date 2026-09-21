@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-mist-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-glow/30 text-mist-100;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-4 outline-glow;
+  }
+}
+
+@layer components {
+  /* Faint engineering-paper grid used behind the hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(165 240 251 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(165 240 251 / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  }
+
+  /* Scroll-reveal: <Reveal /> flips data-visible once in view */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 600ms ease-out var(--reveal-delay, 0ms),
+      transform 600ms ease-out var(--reveal-delay, 0ms);
+  }
+
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .dotted-rule {
+    background-image: linear-gradient(to right, rgb(197 202 216 / 0.45) 50%, transparent 50%);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
