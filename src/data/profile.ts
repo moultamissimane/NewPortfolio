@@ -8,7 +8,7 @@ export const profile = {
   yearsOfExperience: 3,
   email: 'moultamissimane01@gmail.com',
   phone: '+212 673 309 342',
-  location: 'Casablanca, Morocco',
+  location: 'Morocco',
   socials: {
     github: 'https://github.com/moultamissimane',
     linkedin: 'https://www.linkedin.com/in/imane-moultamiss',
